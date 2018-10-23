@@ -1,7 +1,8 @@
 # calculator
 
-> A Vue.js project
-
+> A PWA Vue.js  Calculator project
+![alt text](https://raw.githubusercontent.com/hillkim/beautifu-vue-calculator/screenshots/vue_calc.png)
+Edit
 ## Build Setup
 
 ``` bash
