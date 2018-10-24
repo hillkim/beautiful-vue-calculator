@@ -24,7 +24,7 @@
                 
             </div>
             <div class="calc-row3">
-                    <div @click="append('%')" class="btn-top">%</div>
+                    <div @click="percent" class="btn-top">%</div>
                     <div  @click="append('7')" class="btn">7</div>
                     <div  @click="append('8')" class="btn">8</div>
                     <div  @click="append('9')" class="btn">9</div>
@@ -34,7 +34,7 @@
                     <div @click="append('/')" class="btn-ops">&#247;</div>
                     <div @click="append('*')" class="btn-ops">X</div>
                     <div @click="append('-')" class="btn-ops">-</div>
-                    <div @click="add" class="btn-ops">+</div>
+                    <div @click="append('+')" class="btn-ops">+</div>
                     <div @click="equals" class="btn-ops">=</div>
                 </div>
        
@@ -48,7 +48,7 @@
             return {
               formula: '',
               previous: null,
-              answer: null,
+              answer:null,
             }
           },
           methods: {
@@ -63,9 +63,14 @@
                 this.formula = this.formula.charAt(0) === '-' ? 
                 this.formula.slice(1) : `-${this.formula}`;
             },
-            equals  () {
+            equals () {
               this.answer = (0, eval)(this.formula)
+            },
+            percent() {
+              this.answer = `${parseFloat(eval(this.formula)) / 100}`;
             }
+          },
+          computed: {
           }
 
         }
@@ -84,7 +89,8 @@
   
 }
 .display{
-  grid-column: 1 / 5;
+  grid-column: 1/5;
+  background-image: linear-gradient(to right, rgb(255, 0, 212),orange,rgb(0, 225, 255),green,blue,indigo,violet); 
   background-color: rgb(0, 105, 124);
   border-radius: 0.2em;
   text-align: right;
@@ -96,14 +102,7 @@
   white-space:nowrap;
   overflow:visible;
   overflow-wrap:break-word;
-  background: -webkit-gradient(linear, left top, right top, 
-        from(rgb(25, 76, 192)), 
-        color-stappend(20%, rgb(196, 26, 3)),
-        color-stappend(40%, rgb(236, 190, 6)), 
-        color-stappend(60%, rgb(25, 76, 192)),
-        color-stappend(80%, rgb(3, 116, 8)),
-        to(rgb(196, 26, 3)));
-
+  
 }
 .display2{
 font-size:x-large;
@@ -120,7 +119,12 @@ text-anchor:start;
     text-align: center;
     background-color: white;
     background-image: linear-gradient(rgb(0, 255, 234), rgb(196, 107, 207), rgb(163, 75, 141) );
-    
+}
+.btn:hover,.btn-ops:hover,.btn-top:hover,.btn-btm:hover {background-color: #3e8e41}
+.btn:active,.btn-ops:active,.btn-top:active,.btn-btm:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(-2px) translateX(2px);
 
 }
 .btn-ops{

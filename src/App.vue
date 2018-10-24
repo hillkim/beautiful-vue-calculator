@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <header>
+    <!-- <header>
       <span>Calculator</span>
-    </header>
+    </header> -->
     <main>
       <img src="./assets/logo.png" alt="Amazing Vue Calculator">
       <router-view></router-view>
