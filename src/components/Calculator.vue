@@ -34,7 +34,7 @@
                     <div @click="append('/')" class="btn-ops">&#247;</div>
                     <div @click="append('*')" class="btn-ops">X</div>
                     <div @click="append('-')" class="btn-ops">-</div>
-                    <div @click="append('+')" class="btn-ops">+</div>
+                    <div @click="add" class="btn-ops">+</div>
                     <div @click="equals" class="btn-ops">=</div>
                 </div>
        
@@ -53,19 +53,15 @@
           },
           methods: {
             append (number) {
-                this.sanitize()
-              this.formula += number
+                   this.formula += number
             },
             clear () {
               this.formula = ''
               this.answer=null
             },
             sign () {
-            },
-            sanitize () {
-                if (this.formula.indexOf("+"||"-"||"*"||"/"||"%")) {
-                    console.log("index of the sign is :"+this.formula.indexOf("+"||"-"||"*"||"/"||"%"));
-                }
+                this.formula = this.formula.charAt(0) === '-' ? 
+                this.formula.slice(1) : `-${this.formula}`;
             },
             equals  () {
               this.answer = (0, eval)(this.formula)
@@ -98,7 +94,8 @@
   padding: 20px; 
   text-overflow: ellipsis;
   white-space:nowrap;
-  overflow:hidden;
+  overflow:visible;
+  overflow-wrap:break-word;
   background: -webkit-gradient(linear, left top, right top, 
         from(rgb(25, 76, 192)), 
         color-stappend(20%, rgb(196, 26, 3)),
@@ -114,8 +111,7 @@ justify-content: baseline;
 }
 .display1{
 font-size: large;
-justify-content:stretch;
-
+text-anchor:start;
 }
 .btn,.btn-ops,.btn-top,.btn-btm{
     border-radius: 30%;
