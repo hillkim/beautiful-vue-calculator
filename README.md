@@ -1,6 +1,8 @@
 # calculator
 
-> A Vue.js project
+> A PWA Vue.js  Calculator project
+
+![vue calculator](https://github.com/hillkim/beautiful-vue-calculator/blob/master/screenshots/vue_calc.png?raw=true)
 
 ## Build Setup
 
